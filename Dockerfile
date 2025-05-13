@@ -30,8 +30,10 @@ RUN apt-get update && \
 # Copy requirements first (for better caching)
 COPY requirements.txt .
 
-# Install dependencies with security flags
-RUN pip install --no-cache-dir --no-deps --require-hashes -r requirements.txt
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt && \
+    # Remove pip to reduce attack surface
+    pip uninstall -y pip setuptools
 
 # Copy the application code
 COPY . .
