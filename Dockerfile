@@ -28,9 +28,10 @@ RUN apt-get update && \
 COPY requirements.txt .
 
 # Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt && \
-    # Remove pip to reduce attack surface
-    pip uninstall -y pip setuptools
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt && \
+    # Keep pip for potential updates during runtime
+    pip cache purge
 
 # Copy the application code
 COPY . .
