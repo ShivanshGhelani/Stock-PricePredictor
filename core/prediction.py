@@ -3,8 +3,8 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow import keras
-
-from core.config import TIME_STEPS, MODEL_PATH
+import tensorflow as tf
+import os
 
 from core.config import TIME_STEPS, MODEL_PATH, configure_gpu
 
@@ -13,9 +13,36 @@ configure_gpu()
 # Initialize scaler for data normalization
 scaler = MinMaxScaler(feature_range=(0, 1))
 
-# Load the model
-model = keras.models.load_model(MODEL_PATH)
-print("✅ Model Loaded Successfully!")
+# Create a simple LSTM model
+def create_model():
+    model = keras.Sequential([
+        keras.layers.Input(shape=(TIME_STEPS, 1)),  # Explicit input layer
+        keras.layers.LSTM(50, return_sequences=True),
+        keras.layers.LSTM(50, return_sequences=False),
+        keras.layers.Dense(25, activation='relu'),
+        keras.layers.Dense(1)
+    ])
+    model.compile(optimizer='adam', loss='mse')
+    return model
+
+# Try to load the saved model, if it fails, create a new one
+try:
+    if os.path.exists(MODEL_PATH):
+        try:
+            model = create_model()  # Create model architecture first
+            model.load_weights(MODEL_PATH)  # Then load weights
+            print("✅ Saved model loaded successfully!")
+        except Exception as e:
+            print(f"⚠️ Could not load saved model: {e}")
+            print("Creating new model instead...")
+            model = create_model()
+    else:
+        print("⚠️ No saved model found. Creating new model...")
+        model = create_model()
+except Exception as e:
+    print(f"⚠️ Error during model initialization: {e}")
+    print("Creating basic model as fallback...")
+    model = create_model()
 
 def analyze_stock_prediction(ticker_symbol):
     """
