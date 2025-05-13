@@ -14,6 +14,7 @@ A FastAPI-based web application that demonstrates stock price prediction using L
 - The developers are not responsible for any financial losses incurred from using this tool
 
 ## Features
+
 - Stock price prediction using LSTM (Long Short-Term Memory) neural networks
 - Interactive web interface with real-time visualizations
 - RESTful API endpoints for programmatic access
@@ -22,6 +23,7 @@ A FastAPI-based web application that demonstrates stock price prediction using L
 - Support for multiple stock symbols via Yahoo Finance API
 
 ## Tech Stack
+
 - **Backend**: FastAPI, Python 3.9+
 - **Machine Learning**: TensorFlow, Keras, Scikit-learn
 - **Data Processing**: Pandas, NumPy, yfinance
@@ -30,6 +32,7 @@ A FastAPI-based web application that demonstrates stock price prediction using L
 - **Development**: Jupyter Notebooks for model training
 
 ## Project Structure
+
 ```
 ├── main.py              # FastAPI application entry point
 ├── core/               # Core application logic
@@ -49,6 +52,7 @@ A FastAPI-based web application that demonstrates stock price prediction using L
 ```
 
 ## Model Architecture
+
 - LSTM neural network with multiple layers
 - Input: 90 days of historical price data
 - Hidden layers: 2 LSTM layers (50 units each)
@@ -59,28 +63,33 @@ A FastAPI-based web application that demonstrates stock price prediction using L
 ## Setup and Installation
 
 1. Clone the repository:
+
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/ShivanshGhelani/Stock-PricePredictor.git
 cd StockPricePredictor
 ```
 
 2. Create and activate a virtual environment:
+
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
 3. Install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
 4. Run the application:
+
 ```bash
 uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
 ## API Documentation
+
 - Interactive API documentation available at `/docs`
 - Swagger UI documentation at `/redoc`
 - Main endpoints:
@@ -88,6 +97,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000
   - `POST /predict`: Get stock price predictions
 
 ## Model Limitations
+
 - Predictions are based solely on historical price data
 - Does not account for:
   - Company fundamentals
@@ -98,19 +108,24 @@ uvicorn main:app --host 0.0.0.0 --port 8000
   - Global economic conditions
 
 ## Contributing
+
 This is an educational project and contributions are welcome. Please ensure:
+
 1. Code follows PEP 8 style guide
 2. Add appropriate tests
 3. Update documentation
 4. Maintain the educational focus
 
 ## License
+
 MIT License. See LICENSE file for details.
 
 ## Acknowledgments
+
 - Data provided by Yahoo Finance API
 - LSTM implementation inspired by TensorFlow tutorials
 - UI components from Bootstrap
 
 ## Contact
+
 For academic and educational inquiries only. Not for financial advice or consulting.

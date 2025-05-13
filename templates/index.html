@@ -893,6 +893,349 @@
         .mini-dot.neutral {
             background-color: var(--accent-color);
         }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 1400px) {
+            .dashboard {
+                grid-gap: 1rem;
+            }
+            
+            .stock-price-value {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .dashboard {
+                grid-template-columns: repeat(6, 1fr);
+                grid-gap: 1rem;
+            }
+            
+            .main-stock-panel {
+                grid-column: span 6;
+            }
+            
+            .stats-panel {
+                grid-column: span 3;
+            }
+            
+            .model-insights {
+                grid-column: span 3;
+            }
+            
+            .volume-analysis {
+                grid-column: span 6;
+            }
+            
+            .ai-suggestions {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                position: fixed;
+                transform: translateX(-100%);
+                z-index: 1000;
+                transition: transform 0.3s ease;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                max-width: 100%;
+                padding: 1.5rem;
+            }
+            
+            .page-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .stock-header {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .stock-meta {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                justify-content: center;
+            }
+            
+            .stock-price-container {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                width: 100%;
+            }
+            
+            .stock-price-box {
+                width: 100%;
+                margin: 0;
+            }
+            
+            .stock-price-box.current {
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+                grid-gap: 1rem;
+            }
+            
+            .main-stock-panel, 
+            .stats-panel, 
+            .model-insights, 
+            .volume-analysis, 
+            .ai-suggestions {
+                grid-column: span 1;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .stock-name {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+            
+            .stock-ticker {
+                font-size: 0.8rem;
+                display: inline-block;
+                margin-top: 0.5rem;
+            }
+            
+            .stock-price-container {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1rem 0.5rem;
+            }
+            
+            .stock-price-box {
+                width: 100%;
+                margin: 0;
+                padding: 1.5rem 1rem;
+            }
+            
+            .stock-price-value {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+            
+            .stock-price-change {
+                justify-content: center;
+            }
+            
+            .stock-price-label {
+                text-align: center;
+            }
+            
+            .insight-item {
+                padding: 0.8rem 0;
+            }
+            
+            .dashboard-card {
+                padding: 1rem;
+            }
+            
+            .ai-prediction-badge {
+                left: 50%;
+                transform: translateX(-50%);
+                right: auto;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .main-content {
+                padding: 0.75rem;
+            }
+            
+            .page-title {
+                font-size: 1.25rem;
+                padding: 0 1rem;
+            }
+            
+            .prediction-date {
+                width: 90%;
+                text-align: center;
+            }
+            
+            .stock-price-container {
+                margin: 0 -0.5rem;
+                width: calc(100% + 1rem);
+            }
+            
+            .stock-price-box {
+                border-radius: 8px;
+                margin-bottom: 0.5rem;
+            }
+            
+            .stock-price-value {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 0.5rem;
+            }
+            
+            .stat-icon {
+                margin-right: 0;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+            
+            .dashboard-card {
+                margin: 0 -0.25rem;
+                width: calc(100% + 0.5rem);
+                border-radius: 8px;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) {
+            .sidebar-link:hover {
+                background-color: transparent;
+            }
+            
+            .sidebar-link:active {
+                background-color: rgba(126, 87, 194, 0.1);
+            }
+            
+            .dashboard-card:hover {
+                transform: none;
+            }
+            
+            .chart-column:hover {
+                height: 30%;
+                background-color: rgba(126, 87, 194, 0.2);
+            }
+        }
+
+        /* Dark mode optimization for OLED screens */
+        @media screen and (prefers-color-scheme: dark) {
+            :root {
+                --dark-bg: #000000;
+                --darker-bg: #000000;
+                --dark-card: #0a0a0a;
+                --dark-sidebar: #050505;
+            }
+        }
+
+        /* CSS for high contrast mode */
+        @media (prefers-contrast: high) {
+            :root {
+                --border-color: rgba(255, 255, 255, 0.5);
+                --text-secondary: #ffffff;
+            }
+            
+            .sidebar-link, 
+            .stock-meta-item, 
+            .insight-text {
+                color: #ffffff;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .sidebar,
+            .loader-container,
+            .search-container {
+                display: none;
+            }
+            
+            .main-content {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .dashboard-card {
+                break-inside: avoid;
+                border: 1px solid #ccc;
+            }
+        }
+
+        /* Empty state styling */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            width: 100%;
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+        }
+        
+        .empty-state-content {
+            max-width: 400px;
+            padding: 2rem;
+        }
+        
+        .empty-state i {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+        
+        .empty-state h2 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .empty-state p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .empty-state-examples {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .empty-state-examples p {
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .empty-state-content {
+                max-width: 100%;
+                padding: 1rem;
+            }
+            
+            .empty-state h2 {
+                font-size: 1.25rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1177,16 +1520,42 @@
             initializeStockDisplay();
             
             function initializeStockDisplay() {
-                // If we have recent searches, use the most recent one
-                if (recentSearchList.length > 0) {
-                    const recentStock = recentSearchList[0];
-                    if (stockSearch) stockSearch.value = recentStock.ticker;
-                    runPrediction(recentStock.ticker);
-                } else {
-                    // Otherwise use a default stock like AAPL
-                    const defaultStock = 'AAPL';
-                    if (stockSearch) stockSearch.value = defaultStock;
-                    runPrediction(defaultStock);
+                // Initialize empty state by default
+                if (resultsContainer) resultsContainer.style.display = 'none';
+                if (loaderContainer) loaderContainer.style.display = 'none';
+                showEmptyState();
+                
+                // Update recent searches without loading them
+                updateRecentSearches();
+            }
+            
+            function showEmptyState() {
+                // Create empty state container if it doesn't exist
+                let emptyStateContainer = document.getElementById('empty-state-container');
+                if (!emptyStateContainer) {
+                    emptyStateContainer = document.createElement('div');
+                    emptyStateContainer.id = 'empty-state-container';
+                    emptyStateContainer.className = 'empty-state';
+                    document.querySelector('.main-content').appendChild(emptyStateContainer);
+                }
+                
+                emptyStateContainer.innerHTML = `
+                    <div class="empty-state-content">
+                        <i class="fas fa-search fa-3x"></i>
+                        <h2>Enter a Stock Symbol</h2>
+                        <p>Type a stock symbol in the search box to get AI predictions and analysis</p>
+                        <div class="empty-state-examples">
+                            <p>Example symbols: AAPL, MSFT, GOOGL, AMZN, TSLA</p>
+                        </div>
+                    </div>
+                `;
+                emptyStateContainer.style.display = 'flex';
+            }
+
+            function hideEmptyState() {
+                const emptyStateContainer = document.getElementById('empty-state-container');
+                if (emptyStateContainer) {
+                    emptyStateContainer.style.display = 'none';
                 }
             }
             
@@ -1533,6 +1902,7 @@
                 
                 // Reset UI
                 hideError();
+                hideEmptyState();
                 if (resultsContainer) resultsContainer.style.display = 'none';
                 if (loaderContainer) loaderContainer.style.display = 'block';
                 
@@ -1557,6 +1927,7 @@
                     saveToRecentSearches(data);
                 } catch (error) {
                     showError(error.message);
+                    showEmptyState();
                 } finally {
                     if (loaderContainer) loaderContainer.style.display = 'none';
                 }
@@ -1682,7 +2053,7 @@
                 if (data.predicted_change_amount > 0) {
                     favicon.href = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%234ecca3" d="M16,6L12,2L8,6h3v8h2V6H16z M12,22l4-4h-3v-8h-2v8H8L12,22z"/></svg>`;
                 } else {
-                    favicon.href = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ff6b6b" d="M16,18l-4,4l-4-4h3V10h2v8H16z M12,2L8,6h3v8h2V6h3L12,2z"/></svg>`;
+                    favicon.href = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ff6b6b" d="M16,18l-4,4l-4-4h3V10h-2v8H16z M12,2L8,6h3v8h2V6h3L12,2z"/></svg>`;
                 }
                 
                 // Show results
@@ -1744,6 +2115,61 @@
             // Update page title with current stock info
             document.title = `${data.ticker} ${data.predicted_change_amount > 0 ? '▲' : '▼'} $${data.predicted_price_tomorrow.toFixed(2)} | Stock Predictor`;
         }
+
+        // Add mobile menu toggle functionality
+        function initializeMobileMenu() {
+            const sidebar = document.querySelector('.sidebar');
+            const mainContent = document.querySelector('.main-content');
+            
+            // Create menu toggle button
+            const menuToggle = document.createElement('button');
+            menuToggle.className = 'menu-toggle';
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            menuToggle.style.cssText = `
+                position: fixed;
+                top: 1rem;
+                left: 1rem;
+                z-index: 1001;
+                background: var(--dark-card);
+                border: 1px solid var(--border-color);
+                color: var(--text-primary);
+                padding: 0.5rem;
+                border-radius: 8px;
+                cursor: pointer;
+                display: none;
+            `;
+            
+            document.body.appendChild(menuToggle);
+            
+            // Show/hide menu toggle based on screen size
+            function updateMenuToggle() {
+                if (window.innerWidth <= 992) {
+                    menuToggle.style.display = 'block';
+                } else {
+                    menuToggle.style.display = 'none';
+                    sidebar.classList.remove('active');
+                }
+            }
+            
+            // Toggle sidebar
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+            });
+            
+            // Close sidebar when clicking outside
+            mainContent.addEventListener('click', () => {
+                if (window.innerWidth <= 992) {
+                    sidebar.classList.remove('active');
+                }
+            });
+            
+            // Update on resize
+            window.addEventListener('resize', updateMenuToggle);
+            updateMenuToggle();
+        }
+        
+        // Initialize mobile menu
+        initializeMobileMenu();
     </script>
 </body>
 </html>
