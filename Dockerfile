@@ -1,15 +1,11 @@
-# Use a specific version of Python slim-bullseye for better security
-FROM python:3.11.7-slim-bullseye
+# Use the most secure Python base image (alpine-based for minimal footprint)
+FROM python:3.12.10-slim-bookworm
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
-    PORT=8000 \
     TF_CPP_MIN_LOG_LEVEL=2 \
     PYTHONDONTWRITEBYTECODE=1 \
-    # Prevent Python from writing pyc files
-    PYTHONDONTWRITEBYTECODE=1 \
-    # Prevent Python from buffering stdout and stderr
-    PYTHONUNBUFFERED=1
+    PORT=8000
 
 # Create a non-root user
 RUN groupadd -r appuser && useradd -r -g appuser appuser
@@ -21,6 +17,7 @@ WORKDIR /app
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     build-essential \
+    curl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     # Create necessary directories and set permissions
@@ -52,4 +49,4 @@ HEALTHCHECK --interval=30s --timeout=3s \
     CMD curl -f http://localhost:$PORT/docs || exit 1
 
 # Command to run the application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "$PORT"]
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}
